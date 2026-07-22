@@ -1,0 +1,47 @@
+---
+title: "Node.js ve Express ile Ölçeklenebilir Backend Mimarisi"
+subtitle: "Modern web projelerinde sürdürülebilir, modüler ve güvenli bir Express.js sunucu altyapısı nasıl kurulur?"
+summary: "Backend geliştirme sürecinde doğru temelleri atmak, projenin gelecekteki büyüme hızını doğrudan belirler."
+image: "/images/gallery/post-01.jpg"
+publishedAt: "2026-07-05"
+tag: "Backend Architecture"
+---
+
+## Hakkında
+
+Modern web projelerinde sürdürülebilir, modüler ve güvenli bir Express.js sunucu altyapısı kurmanın incelikleri. Kod tekrarını önleyen ve katmanlı bir yapı sunan mimariler kurmak oldukça önemlidir.
+
+## Temel Yapıtaşları
+
+* **Modüler Rotalama:** Endpoint'lerin düzenli ve ayrıştırılmış olması.
+* **Servis Katmanı:** İş mantığının (business logic) controller'lardan bağımsız yönetilmesi.
+* **Hata Yönetimi:** Merkezi bir error-handling mekanizması kurmak.
+
+## Hızlı Başlangıç
+
+Projelerinizde modüler yapıyı başlatmak için temel dizin yapısını oluşturun:
+
+<CodeBlock compact marginBottom="16" codes={[
+  {
+    code: "mkdir src && cd src",
+    language: "bash"
+  }
+]} />
+
+Gerekli katman dizinlerini ekleyin:
+
+<CodeBlock compact marginBottom="16" codes={[
+  {
+    code: "mkdir routes controllers services models",
+    language: "bash"
+  }
+]} />
+
+Sunucuyu başlatın:
+
+<CodeBlock compact marginBottom="16" codes={[
+  {
+    code: "npm run dev",
+    language: "bash"
+  }
+]} />

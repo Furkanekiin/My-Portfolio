@@ -1,0 +1,65 @@
+---
+title: "Stripe SaaS Subscription Starter Kit"
+summary: "Abonelik modelleri, ödeme gateway entegrasyonları ve bir SaaS şablonunun paketlenme süreci."
+image: "/images/gallery/post-03.jpg"
+publishedAt: "2026-07-01"
+tag: "SaaS & Payments"
+---
+
+## Payment integration
+
+Stripe abonelik sistemlerini projeye entegre etmek, kullanıcıların ödeme akışlarını yönetmek ve webhook dinleyicileri kurmak SaaS projelerinin en kritik parçasıdır.
+
+<CodeBlock
+    marginBottom="16"
+    codes={[
+  {
+    code:
+`stripe:      'enabled',          // enabled | disabled
+apiVersion:  '2026-06-28',       // version string
+mode:        'subscription',     // subscription | payment
+currency:    'usd',              // usd | eur | try
+successUrl:  '/dashboard',       // redirect path
+cancelUrl:   '/pricing',         // redirect path
+webhookKey:  'whsec_...',        // webhook secret
+trialDays:   '7',                // trial period
+taxRates:    'automatic',        // automatic | manual`, 
+    language: "tsx",
+    label: "src/config/stripe.js"
+  }
+]} />
+
+## Subscription lifecycle
+
+Webhook olaylarını yakalayarak kullanıcıların abonelik durumlarını veritabanında güncel tutmak ve yetkilendirmeleri buna göre yönetmek gerekir.
+
+<CodeBlock
+    codeHeight={24}
+    marginBottom="16"
+    codes={[
+  {
+    code:
+`const stripeConfig = {
+    checkout: {
+      paymentMethodTypes: ['card'],
+      lineItems: [{ price: 'price_id', quantity: 1 }],
+      mode: 'subscription',
+      allowPromotionCodes: true
+    },
+    webhook: {
+      events: [
+        'customer.subscription.created',
+        'customer.subscription.updated',
+        'customer.subscription.deleted',
+        'invoice.payment_succeeded'
+      ]
+    },
+    portal: {
+      enabled: true,
+      returnUrl: '/dashboard/settings'
+    }
+};`, 
+    language: "tsx",
+    label: "src/config/stripe.js"
+  }
+]} />

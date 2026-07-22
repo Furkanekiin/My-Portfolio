@@ -1,0 +1,29 @@
+---
+title: "Güvenli Kimlik Doğrulama (Auth) Altyapısı Nasıl Tasarlanır?"
+subtitle: "JWT tabanlı oturum yönetimi ve şifreleme katmanları ile üretime hazır güvenli kimlik doğrulama sistemleri geliştirme rehberi."
+summary: "JWT tabanlı oturum yönetimi, şifreleme katmanları ve üretime hazır güvenli bir authentication boilerplate geliştirme rehberi."
+image: "/images/gallery/post-02.jpg"
+publishedAt: "2026-07-28"
+tag: "Authentication & Security"
+---
+# Güvenli Kimlik Doğrulama (Auth) Altyapısı Nasıl Tasarlanır?
+
+JWT tabanlı oturum yönetimi ve şifreleme katmanları ile üretime hazır güvenli kimlik doğrulama sistemleri geliştirme rehberi.
+
+## Hakkında
+Web uygulamalarının en kritik bileşeni şüphesiz kimlik doğrulama (authentication) mekanizmasıdır. Kullanıcı verilerinin güvenliği ve oturum sürekliliği taviz verilmemesi gereken konuların başında gelir.
+
+## Güvenlik Önlemleri
+- Güçlü şifreleme algoritmaları kullanmak.
+- JWT ve token güvenliğini en üst düzeyde tutmak.
+- PostgreSQL veritabanında hassas verileri güvenli şekilde saklamak.
+
+## Örnek Kullanım
+Kullanıcı doğrulama katmanını middleware ile koruma altına almak için:
+
+```javascript
+const verifyToken = (req, res, next) => {
+  const token = req.headers['authorization'];
+  if (!token) return res.status(403).json({ error: 'Token gerekli' });
+  // Token doğrulama işlemleri
+};
